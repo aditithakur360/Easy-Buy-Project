@@ -1,0 +1,14 @@
+package com.project.ProductService.testing;
+
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.ContextConfiguration;
+
+import com.project.authenticationservice.controller.UserController;
+
+@AutoConfigureMockMvc
+@ContextConfiguration(classes = {ProductController.class})
+@WebMvcTest
+public class ProductControllerMockTest {
+
+}

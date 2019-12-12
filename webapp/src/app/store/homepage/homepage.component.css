@@ -1,0 +1,65 @@
+.image1{
+    background-image: url("https://images.unsplash.com/photo-1566055803687-0665ef48df90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-size: cover;
+    height: 600px;
+    background-repeat: no-repeat;
+}
+.image2{
+    background-image: url("https://images.unsplash.com/photo-1523294587484-bae6cc870010?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-size: cover;
+    height: 600px;
+    background-repeat: no-repeat;
+}
+.image3{
+    background-image: url("https://images.unsplash.com/photo-1507598641400-ec3536ba81bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-size: cover;
+    height: 600px;
+    background-repeat: no-repeat;
+}
+
+.image4{
+    background-image: url("https://images.unsplash.com/photo-1573679904842-df1111630209?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-size: cover;
+    height: 600px;
+    background-repeat: no-repeat;
+}
+.image-text{
+   padding-left: 20%;
+   padding-top: 17%;
+   font-family: cursive;
+}
+.home-message{
+    padding: 5%;
+    background-color: #3f3d3d98;
+    color: #ffffff;
+    margin-right: 0px;
+    font-family: cursive;
+    background: linear-gradient(to bottom, #9c9c90 0%, #93e1ff 92%);
+}
+.badge-color{
+    background-color: #30c0f8;
+    color: #ffffff;
+    transition: transform 0.1s;
+}
+.button-style{
+    padding-left: 15%;
+}
+.badge-color:hover{
+   transform: scale(1.05);
+}
+/* nav {
+    float: left;
+    width: 15%;
+    /* border: 5px solid wheat; 
+}
+article {
+    float: left;
+    width: 85%;
+    /* border: 5px solid wheat; 
+} */
+.navbar-toggler-icon, .custom-toggler{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(236, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-color{
+    opacity: 0%;
+}

@@ -1,0 +1,23 @@
+package com.project.ProductService.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.project.ProductService.model.Product;
+import com.project.ProductService.repository.BillRepository;
+import com.project.ProductService.repository.ProductRepository;
+
+@Service
+public class BillServiceImpl {
+
+	@Autowired
+	BillRepository billRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Transactional
+	public void addItemToBill(int id) {
+		Product product = productRepository.findById(id).get();
+	}
+	
+}

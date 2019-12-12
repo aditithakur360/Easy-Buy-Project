@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md bg-color navbar-dark text-white ">
+  <div class="navbar-brand text-font"><b>
+      <i class="material-icons align-middle pb-2 text-color icon-size">local_mall</i>
+      Easy<span class="text-color">Buy</span></b></div>
+  <div class="d-flex justify-content-end">
+
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+    <ul class=" navbar-nav">
+      <li class="nav-item" *ngIf="getRole() =='U' || getRole() == 'A'"><a class="nav-link text-white" routerLink="producthome"><i
+            class="material-icons align-middle text-color pb-2">house</i>Home</a></li>
+      
+            <li class="nav-item" *ngIf="getRole() == null"><a class="nav-link text-white" routerLink=""><i
+                  class="material-icons align-middle text-color pb-2">house</i>Home</a></li>
+
+                  <li class="nav-item" *ngIf="getRole() != null"><span class="nav-link text-white"><i
+                        class="material-icons align-top">perm_identity</i>{{getName()}}</span></li>
+
+          <!-- <li class="nav-item" *ngIf="getRole() == 'O'"><a class="nav-link text-white"
+            routerLink="/producthome">User List</a></li> -->
+      
+                        <li class="nav-item" *ngIf="getRole() == 'A'"><a class="nav-link text-white"
+                              routerLink="/createBill">Create Bill</a></li>
+
+                  <li class="nav-item" *ngIf="getRole() == 'U'"><a class="nav-link text-white" routerLink="/purchasehistory">Purchase History</a></li>
+
+      <li class="nav-item" *ngIf="getRole() == null"><a class="nav-link text-white" routerLink="/login"><i
+            class="material-icons align-middle text-color pb-2">person</i>Login</a></li>
+
+      <li class="nav-item" *ngIf="getRole() == null"><a class="nav-link text-white" routerLink="/signup"><i
+            class="material-icons align-middle text-color pb-2">person_add</i>Register</a></li>
+
+      <li class="nav-item" *ngIf="getRole() != null"><a class="nav-link text-white" routerLink=""
+          (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,230 @@
+<div *ngIf="signupFlag == true;else elseBlock">
+  <div>
+    <h3 class="notification-color">Your registration is successful.Go to
+      <a routerLink="/login" class="login-link">Login Page</a> to continue shopping.</h3>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="container pt-2">
+    <form class="row form-color font-menu" [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <h2 class="text-color font-weight-bolder mt-lg-4  pt-3"><i
+            class="material-icons align-middle icon-size pb-2">person_add</i> Signup</h2>
+        <div class="col badge" *ngIf="errorFlag == true"><span class="cart-empty p-2 border rounded mt-4">User Already
+            Exists</span></div>
+      </div>
+
+
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-lg-4 p-3">
+        <label for="firstName">First Name <b class="text-danger">*</b></label>
+        <input type="text"
+          [ngClass]="[
+                        (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched) && signupForm.controls.firstName.invalid ? 'is-invalid' : '', 
+                        (signupForm.controls.firstName.valid || signupForm.controls.firstName.invalid) ? 'form-control' : '']"
+                                id="firstName" formControlName="firstName" placeholder="Enter First Name">
+        <div
+          *ngIf="!signupForm.controls.firstName.valid && (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched)">
+          <div class="errorMessage invalid-feedback"
+            *ngIf="signupForm.controls.firstName.errors.required || signupForm.controls.firstName.errors.maxlength">
+            Please update the highlighted mandatory field(s).</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-lg-4 p-3">
+        <label for="lastName">Last Name <b class="text-danger">*</b></label>
+        <input type="text"
+          [ngClass]="[
+                      (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) && signupForm.controls.lastName.invalid ? 'is-invalid' : '', 
+                      (signupForm.controls.lastName.valid || signupForm.controls.lastName.invalid) ? 'form-control' : '']" id="lastName"
+          formControlName="lastName" placeholder="Enter Last Name">
+        <div
+          *ngIf="!signupForm.controls.lastName.valid && (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.lastName.errors.required || signupForm.controls.lastName.errors.required">
+            Please update the highlighted mandatory field(s).</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-lg-4 p-3">
+        <label for="age">Age <b class="text-danger">*</b></label>
+        <input type="text" [ngClass]="[
+                        (signupForm.controls.age.dirty || signupForm.controls.age.touched) && signupForm.controls.age.invalid ? 'is-invalid' : '', 
+                        (signupForm.controls.age.valid || signupForm.controls.age.invalid) ? 'form-control' : '']"
+          id="age" formControlName="age" placeholder="Enter the age"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+        <div
+          *ngIf="!signupForm.controls.age.valid && (signupForm.controls.age.dirty || signupForm.controls.age.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.age.errors.required || signupForm.controls.age.errors.maxlength">
+            Please update the highlighted mandatory field(s).</div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-lg-4 p-3">
+        <label for="gender">Gender</label>
+        <select class="form-control" id="gender" formControlName="gender">
+          <option value="" [selected]="true" hidden>--Select Gender--</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-lg-4 p-3">
+        <label for="contactNumber">Contact Number <b class="text-danger">*</b></label>
+        <input type="text"
+          [ngClass]="[
+                            (signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched) && signupForm.controls.contactNumber.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.contactNumber.valid || signupForm.controls.contactNumber.invalid) ? 'form-control' : '']"
+          id="contactNumber" formControlName="contactNumber" placeholder="Enter contact"
+          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+           >
+        <div
+          *ngIf="!signupForm.controls.contactNumber.valid && (signupForm.controls.contactNumber.dirty || signupForm.controls.contactNumber.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.contactNumber.errors.required || signupForm.controls.contactNumber.errors.maxlength">
+            Please update the highlighted mandatory field(s).</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-lg-6 p-3">
+        <label for="userType">Select ROLE to Register</label>
+        <select
+          [ngClass]="[
+                            (signupForm.controls.userType.dirty || signupForm.controls.userType.touched) && signupForm.controls.userType.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.userType.valid || signupForm.controls.userType.invalid) ? 'form-control' : '']"
+          id="userType" formControlName="userType">
+          <option value="" [selected]="true" hidden>--Select role--</option>
+          <option value="U">User</option>
+          <option value="A">Shop Manager</option>
+        </select>
+      </div>
+
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-lg-6 p-3">
+        <label for="userId">User Id <b class="text-danger">*</b></label>
+        <input type="text"
+          [ngClass]="[
+                            (signupForm.controls.userId.dirty || signupForm.controls.userId.touched) && signupForm.controls.userId.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.userId.valid || signupForm.controls.userId.invalid) ? 'form-control' : '']" id="userId"
+          formControlName="userId" placeholder="Enter user id">
+        <div
+          *ngIf="!signupForm.controls.userId.valid && (signupForm.controls.userId.dirty || signupForm.controls.userId.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.userId.errors.required || signupForm.controls.userId.errors.maxlength">
+            Please update the highlighted mandatory field(s).
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-lg-6 p-3">
+        <label for="password">Password <b class="text-danger">*</b></label><br>
+        <input type="password"
+          [ngClass]="[
+                            (signupForm.controls.password.dirty || signupForm.controls.password.touched) && signupForm.controls.password.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.password.valid || signupForm.controls.password.invalid) ? 'form-control' : '']"
+          id="password" formControlName="password" placeholder="Enter Password">
+        <div class="errorMessage">
+          <div
+            *ngIf="!signupForm.controls.password.valid && (signupForm.controls.password.dirty || signupForm.controls.password.touched)">
+            <div *ngIf="signupForm.controls.password.errors.required || signupForm.controls.password.errors.maxlength">
+              Please update the highlighted mandatory field(s).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-lg-4 p-3">
+        <label for="confirmPassword">Confirm Password <b class="text-danger">*</b></label><br>
+        <input type="password"
+          [ngClass]="[
+                            (signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched) && signupForm.controls.confirmPassword.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.confirmPassword.valid || signupForm.controls.confirmPassword.invalid) ? 'form-control' : '']"
+          id="confirmPassword" formControlName="confirmPassword" placeholder="Enter Confirm Password"
+          (keyup)="passwordMatch()">
+        <div class="errorMessage">
+          <div
+            *ngIf="!signupForm.controls.confirmPassword.valid && (signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched)">
+            <div *ngIf="signupForm.controls.confirmPassword.errors.required">Confirm
+              Password is required</div>
+          </div>
+          <div *ngIf="signupForm.controls.confirmPassword.dirty || signupForm.controls.confirmPassword.touched">
+            <div *ngIf="passwordFlag == false">Password mismatch</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-lg-12 p-3">
+        <label for="question1">1)Select a Security Question</label>
+        <select name="question1" class="form-control" id="question1" formControlName="question1">
+          <option value="" [selected]="true" hidden>--Select secret question--</option>
+          <option value="what is your Nick name">what is your Nick name</option>
+          <option value="what is your favorite sport">what is your favorite sport</option>
+        </select>
+
+        <label for="answer1">Enter your Answer</label>
+        <input type="text"
+          [ngClass]="[(signupForm.controls.answer1.valid || signupForm.controls.answer1.invalid) ? 'form-control' : '',
+                
+                            (signupForm.controls.answer1.dirty) && signupForm.controls.answer1.invalid ? 'is-invalid' : '']"           
+          id="answer1" formControlName="answer1" placeholder="Enter Secret Answer">
+        <div
+          *ngIf="!signupForm.controls.answer1.valid && (signupForm.controls.answer1.dirty || signupForm.controls.answer1.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.answer1.errors.required || signupForm.controls.answer1.errors.maxlength">
+            Please update the highlighted mandatory field(s).
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-lg-12 p-3">
+        <label for="question2">2)Select a Security Question</label>
+        <select name="question2" class="form-control" id="question2" formControlName="question2">
+          <option value="" [selected]="true" hidden>--Select secret question--</option>
+          <option value="what is your favorite food">what is your favorite food</option>
+          <option value="what is your favorite color">what is your favorite color</option>
+        </select>
+        <label for="answer2">Enter your Answer</label>
+        <input type="text"
+          [ngClass]="[
+                            (signupForm.controls.answer2.dirty || signupForm.controls.answer2.touched) && signupForm.controls.answer2.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.answer2.valid || signupForm.controls.answer2.invalid) ? 'form-control' : '']"
+          id="answer2" formControlName="answer2" placeholder="Enter Secret Answer">
+        <div
+          *ngIf="!signupForm.controls.answer2.valid && (signupForm.controls.answer2.dirty || signupForm.controls.answer2.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.answer2.errors.required || signupForm.controls.answer2.errors.maxlength">
+            Please update the highlighted mandatory field(s).
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-lg-12 p-3">
+        <label for="question3">3)Select a Security Question</label>
+        <select name="question3" class="form-control" id="question3" formControlName="question3">
+          <option value="" [selected]="true" hidden>--Select secret question--</option>
+          <option value="what is your favorite holiday spot">what is your favorite holiday spot</option>
+          <option value="what is your pet name">what is your pet name</option>
+        </select>
+        <label for="answer3">Enter your Answer</label>
+        <input type="text"
+          [ngClass]="[
+                            (signupForm.controls.answer3.dirty || signupForm.controls.answer3.touched) && signupForm.controls.answer3.invalid ? 'is-invalid' : '', 
+                            (signupForm.controls.answer3.valid || signupForm.controls.answer3.invalid) ? 'form-control' : '']"
+          id="answer3" formControlName="answer3" placeholder="Enter Secret Answer">
+        <div
+          *ngIf="!signupForm.controls.answer3.valid && (signupForm.controls.answer3.dirty || signupForm.controls.answer3.touched)">
+          <div class="errorMessage"
+            *ngIf="signupForm.controls.answer3.errors.required || signupForm.controls.answer3.errors.maxlength">
+            Please update the highlighted mandatory field(s).
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-6 col-sm-6 col-md-3 col-lg-3 p-3">
+        <button type="submit" class="bg-color text-white btn highlight-link" [disabled]="!signupForm.valid"
+          name="signup">Signup</button>
+      </div>
+      <div class="col-6 col-sm-6 col-md-9 col-lg-9">
+        <div class="exist-user">Already a member? <a class="login-link" routerLink="/login">Login</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

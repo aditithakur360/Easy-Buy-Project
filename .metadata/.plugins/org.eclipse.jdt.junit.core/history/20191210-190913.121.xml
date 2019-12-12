@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserServiceMockTest" project="product-service" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.project.ProductService.testing.UserServiceMockTest" time="0.032" displayname="UserServiceMockTest" uniqueid="[engine:junit-vintage]/[runner:com.project.ProductService.testing.UserServiceMockTest]">
+    <testcase name="MockTestgetAllUserList" classname="com.project.ProductService.testing.UserServiceMockTest" time="0.0" displayname="MockTestgetAllUserList" uniqueid="[engine:junit-vintage]/[runner:com.project.ProductService.testing.UserServiceMockTest]/[test:MockTestgetAllUserList(com.project.ProductService.testing.UserServiceMockTest)]"/>
+    <testcase name="MockTestgetAllPendingList" classname="com.project.ProductService.testing.UserServiceMockTest" time="0.0" displayname="MockTestgetAllPendingList" uniqueid="[engine:junit-vintage]/[runner:com.project.ProductService.testing.UserServiceMockTest]/[test:MockTestgetAllPendingList(com.project.ProductService.testing.UserServiceMockTest)]"/>
+    <testcase name="MockTestsaveStatus" classname="com.project.ProductService.testing.UserServiceMockTest" time="0.032" displayname="MockTestsaveStatus" uniqueid="[engine:junit-vintage]/[runner:com.project.ProductService.testing.UserServiceMockTest]/[test:MockTestsaveStatus(com.project.ProductService.testing.UserServiceMockTest)]"/>
+  </testsuite>
+  <testsuite name="Unrooted Tests" incomplete="true" displayname="Unrooted Tests">
+    <testcase name="com.project.ProductService.testing.UserServiceMockTest" classname="com.project.ProductService.testing.UserServiceMockTest" incomplete="true" dynamicTest="true" displayname="unnecessary Mockito stubbings" uniqueid="[engine:junit-vintage]/[runner:com.project.ProductService.testing.UserServiceMockTest]/[dynamic:unnecessary Mockito stubbings(com.project.ProductService.testing.UserServiceMockTest)]"/>
+  </testsuite>
+</testrun>

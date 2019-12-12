@@ -1,0 +1,251 @@
+
+    <section class="container-fluid  mt-5 bg-light">
+        <br><br>
+        <h2 class=" display-5 font-weight-bolder login-color mt-4"><i
+            class="material-icons align-middle icon-size">add_shopping_cart</i> Add Product</h2>
+        <form class="border  p-4" [formGroup]="editProductForm" method="post">
+          <div class="row">
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="productName">
+                Enter Product Name <b class="text-danger">*</b>
+              </label>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.productName.dirty || editProductForm.controls.productName.touched) && editProductForm.controls.productName.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.productName.valid ||editProductForm.controls.productName.invalid) ? 'form-control' : '']"
+                id="productName" formControlName="productName">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.productName.valid && (editProductForm.controls.productName.dirty || editProductForm.controls.productName.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.productName.errors.required">Please enter valid product name!
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <div class="row">
+                <label for="productType">
+                  Enter Product Type <b class="text-danger">*</b>
+                </label>
+              </div>
+              <div class="row ">
+                <select
+                  [ngClass]="[
+                        (editProductForm.controls.productType.dirty || editProductForm.controls.productType.touched) && editProductForm.controls.productType.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.productType.valid ||editProductForm.controls.productType.invalid) ? 'form-control' : '']"
+                  formControlName="productType" id="productType">
+                  <option value="1">1-Home and Kitchen</option>
+                  <option value="2">2-Bakery</option>
+                  <option value="3">3-Fruits and vegetables</option>
+                  <option value="4">4-snacks</option>
+                </select>
+              </div>
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.productType.valid && (editProductForm.controls.productType.dirty || editProductForm.controls.productType.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.productType.errors.required">Please enter valid product name!
+                </div>
+              </div>
+            </div>
+      
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="brand">
+                Enter Product Brand <b class="text-danger">*</b>
+              </label>
+              <input type="text" [ngClass]="[
+                        (editProductForm.controls.brand.dirty || editProductForm.controls.brand.touched) && editProductForm.controls.brand.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.brand.valid ||editProductForm.controls.brand.invalid) ? 'form-control' : '']"
+                id="brand" formControlName="brand">
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.brand.valid && (editProductForm.controls.brand.dirty || editProductForm.controls.brand.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.brand.errors.required">Please enter valid product brand name!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="quantity-type">
+                  Enter Quantity Type: <b class="text-danger">*</b>
+                </label>
+                <div class="row ">
+                  <select
+                    [ngClass]="[
+                          (editProductForm.controls.quantityType.dirty || editProductForm.controls.quantityType.touched) && editProductForm.controls.quantityType.invalid ? 'is-invalid' : '', 
+                          (editProductForm.controls.quantityType.valid ||editProductForm.controls.quantityType.invalid) ? 'form-control' : '']"
+                    formControlName="quantityType" id="quantity-type">
+                    <option value="1">1-numbers</option>
+                    <option value="2">2-packets</option>
+                    <option value="3">3-kg's</option>
+                  </select>
+                </div>
+                <div class="errorMessage"
+                  *ngIf="!editProductForm.controls.quantityType.valid && (editProductForm.controls.quantityType.dirty || editProductForm.controls.quantityType.touched)">
+                  <div class="errorMessage" *ngIf="editProductForm.controls.quantityType.errors.required">Please enter valid Quantity type !
+                  </div>
+                </div>
+              </div>
+          </div>
+      
+      
+          <div class="row">
+            
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="rate">
+                Enter rate per quantity <b class="text-danger">*</b>
+              </label>
+              <input type="text" [ngClass]="[
+                        (editProductForm.controls.rate.dirty || editProductForm.controls.rate.touched) && editProductForm.controls.rate.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.rate.valid ||editProductForm.controls.rate.invalid) ? 'form-control' : '']"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                id="rate" formControlName="rate">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.rate.valid && (editProductForm.controls.rate.dirty || editProductForm.controls.rate.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.rate.errors.required">Please enter valid rate per quantity!
+                </div>
+              </div>
+            </div>
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <div class="row">
+                <label for="stockCount">
+                  Enter Stock Count <b class="text-danger">*</b>
+                </label>
+              </div>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.stockCount.dirty || editProductForm.controls.stockCount.touched) && editProductForm.controls.stockCount.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.stockCount.valid ||editProductForm.controls.stockCount.invalid) ? 'form-control' : '']"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                id="stock-count-form" formControlName="stockCount">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.stockCount.valid && (editProductForm.controls.stockCount.dirty || editProductForm.controls.stockCount.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.stockCount.errors.required">Please enter valid stock count!
+                </div>
+              </div>
+            </div>
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="add-date">
+                Enter Product add date: <b class="text-danger">*</b>
+              </label>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.addDate.dirty || editProductForm.controls.addDate.touched) && editProductForm.controls.addDate.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.addDate.valid ||editProductForm.controls.addDate.invalid) ? 'form-control' : '']"
+                id="add-date" formControlName="addDate">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.addDate.valid && (editProductForm.controls.addDate.dirty || editProductForm.controls.addDate.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.addDate.errors.required">Please enter valid product add date!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="aisle">
+                  Enter aisle: <b class="text-danger">*</b>
+                </label>
+                <input type="text" [ngClass]="[
+                          (editProductForm.controls.aisle.dirty || editProductForm.controls.aisle.touched) && editProductForm.controls.aisle.invalid ? 'is-invalid' : '', 
+                          (editProductForm.controls.aisle.valid ||editProductForm.controls.aisle.invalid) ? 'form-control' : '']"
+                  onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                  id="aisle" formControlName="aisle">
+        
+                <div class="errorMessage"
+                  *ngIf="!editProductForm.controls.aisle.valid && (editProductForm.controls.aisle.dirty || editProductForm.controls.aisle.touched)">
+                  <div class="errorMessage" *ngIf="editProductForm.controls.aisle.errors.required">Please enter valid aisle!
+                  </div>
+                </div>
+              </div>
+          </div>
+      
+          <div class="row">
+            
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="shelf-form">
+                Enter shelf: <b class="text-danger">*</b>
+              </label>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.shelf.dirty || editProductForm.controls.shelf.touched) && editProductForm.controls.shelf.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.shelf.valid || editProductForm.controls.shelf.invalid) ? 'form-control' : '']"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                 id="shelf-form"
+                formControlName="shelf">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.shelf.valid && (editProductForm.controls.shelf.dirty || editProductForm.controls.shelf.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.shelf.errors.required">Please enter valid shelf number!
+                </div>
+              </div>
+      
+      
+            </div>
+      
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="mfg-form">
+                Enter Product Manufacture Date: <b class="text-danger">*</b>
+              </label>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.dateOfManufacture.dirty || editProductForm.controls.dateOfManufacture.touched) && editProductForm.controls.dateOfManufacture.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.dateOfManufacture.valid ||editProductForm.controls.dateOfManufacture.invalid) ? 'form-control' : '']"
+                id="mfg-form" formControlName="dateOfManufacture">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.dateOfManufacture.valid && (editProductForm.controls.dateOfManufacture.dirty || editProductForm.controls.dateOfManufacture.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.dateOfManufacture.errors.required">Please enter valid manufacturing date!
+                </div>
+              </div>
+      
+            </div>
+      
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+              <label for="exp-form">
+                Enter Product Expiry date: <b class="text-danger">*</b>
+              </label>
+              <input type="text"
+                [ngClass]="[
+                        (editProductForm.controls.dateOfExpiry.dirty || editProductForm.controls.dateOfExpiry.touched) && editProductForm.controls.dateOfExpiry.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.dateOfExpiry.valid ||editProductForm.controls.dateOfExpiry.invalid) ? 'form-control' : '']"
+                id="exp-form" formControlName="dateOfExpiry">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.dateOfExpiry.valid && (editProductForm.controls.dateOfExpiry.dirty || editProductForm.controls.dateOfExpiry.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.dateOfExpiry.errors.required">Please enter valid product exppiry date!
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+              <label for="image">
+                Enter Image url: <b class="text-danger">*</b>
+              </label>
+              <input type="text" [ngClass]="[
+                        (editProductForm.controls.image.dirty || editProductForm.controls.image.touched) && editProductForm.controls.image.invalid ? 'is-invalid' : '', 
+                        (editProductForm.controls.image.valid ||editProductForm.controls.image.invalid) ? 'form-control' : '']"
+                id="image" formControlName="image">
+      
+              <div class="errorMessage"
+                *ngIf="!editProductForm.controls.image.valid && (editProductForm.controls.image.dirty || editProductForm.controls.image.touched)">
+                <div class="errorMessage" *ngIf="editProductForm.controls.image.errors.required">Please enter valid product image url!
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <button class="btn btn-color" type="submit" value="submit" (click)="onSubmit()">Submit</button>
+            </div>
+          </div>
+        </form> <br><br>
+      </section>
+

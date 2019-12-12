@@ -1,0 +1,56 @@
+
+  <div class="row mr-0">
+    <div class="col-12 col-sm-12 col-md-4 col-md-xl-4 col-lg-3">
+    <nav class="navbar navbar-expand navbar-light bg-transparent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Product Category
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Home&Kitchen</a>
+                        <a class="dropdown-item" href="#">Bakery</a>
+                        <a class="dropdown-item" href="#">Fruits&Vegetables</a>
+                        <a class="dropdown-item" href="#">Snacks</a>
+                    </div>
+                </li>
+            </ul>
+            <!--ul class="navbar-nav navbar-right">
+    
+            </ul-->
+        </div>
+    </nav>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 col-md-xl-4 col-lg-6 pt-2">
+        <app-search (filterFood)="displaySearchFood($event)"></app-search>
+      </div>
+      <div class="col-12 col-sm-12 col-md-4 col-md-xl-4 col-lg-3 pt-2">
+  <div class="form-inline">
+          <form [formGroup]="sortList" (ngSubmit)="sort()">
+              <select class="form-control" formControlName="sortCategory">
+                <option value="filter" [selected]="true" hidden>Sort By</option>
+                <option value="name">Name</option>
+                <option value="availability">Availability</option>
+                <option value="price">Price</option>
+                <!-- <option value="4">Popularity</option> -->
+              </select>
+              <button type=submit
+              class="input-group-text material-icons align-middle color-dark btn">sort</button>
+            </form>
+        </div>
+  </div>
+  
+       
+  </div>
+  
+  
+  
+    
+  
+  
+  <div class="container row">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let products of productsList">
+      <app-product-list [list]=products></app-product-list>
+    </div>
+  </div>  

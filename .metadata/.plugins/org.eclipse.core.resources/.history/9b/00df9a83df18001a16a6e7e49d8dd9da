@@ -1,0 +1,5 @@
+package com.project.ProductService.service;
+
+public class BillServiceImpl {
+
+}

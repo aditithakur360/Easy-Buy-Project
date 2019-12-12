@@ -1,0 +1,52 @@
+package com.project.ProductService.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.ProductService.model.Bill;
+import com.project.ProductService.model.Product;
+import com.project.ProductService.repository.BillRepository;
+import com.project.ProductService.repository.ProductRepository;
+import com.project.ProductService.repository.UserRepository;
+
+@Service
+public class BillServiceImpl {
+
+	@Autowired
+	BillRepository billRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Transactional
+	public void userBills(Bill userBill) {
+		System.out.println(userBill.getUser());
+		Bill bill = new Bill();
+//		bill.setId(userBill.getBillId());
+//		bill.setPurchaseDate(userBill.getPurchaseDate());
+//		Users userDetails = userRepository.findById(userBill.getUserId()).get();
+//		bill.setUser(userDetails);
+//		
+//		billRepository.save(bill);
+//	
+//		int billId = billRepository.findMaximunBillId();
+//		Bill bill1 = billRepository.findById(billId).get();
+//	
+//		List<BillDetails> billDetailsList = new ArrayList<BillDetails>();
+//	
+//		for(int i=0; i<userBill.getProductList().size() ;i++) {	
+//				ProductDetails pd = userBill.getProductList().get(i);
+//				Product product = productRepository.findById(pd.getProductId()).get();
+//				int rate = product.getRatePerQuantity();
+//				int quantity = pd.getQuantity();
+//				total+=(rate * quantity);				
+//				billDetailsList.add( new BillDetails(billId, pd.getProductId(), pd.getQuantity()));
+//		}
+	}
+	
+}

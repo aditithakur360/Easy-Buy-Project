@@ -1,0 +1,29 @@
+package com.project.ProductService.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.project.ProductService.model.Bill;
+import com.project.ProductService.model.BillDetails;
+
+@Repository
+public interface BillRepository extends JpaRepository<Bill, Integer>{
+	
+//	@Query(nativeQuery = true, value = "select max(bd_id) from bill_details;")
+//	int findMaximunBillDetailsId();
+//	
+	@Query(nativeQuery = true, value = "select max(bI_id) from bill;")
+	int findMaximunBillId();
+//	
+//	@Query(nativeQuery = true, value = "select * from bill_details;")
+//	List<BillDetails> findBillDetailsAll();
+	
+	@Query(nativeQuery = true, value = "SELECT * FROM bill join bill_details on bill.bi_id = bill_details.bd_bi_id;")
+	List<Bill> getAllBillDetails();
+	
+	@Query(nativeQuery = true, value = "select * from bill join user on bill.bi_us_id = user.us_id where user.us_user_id = :userId")
+	List<Bill> getAllBills(String userId);
+}

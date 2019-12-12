@@ -1,0 +1,12 @@
+.bg-color{
+    background: linear-gradient(to bottom, #3f3d3d 0%, #999595 72%);
+}
+.text-color{
+    color: #30c0f8;
+}
+.text-font{
+    font-size: 25px;
+}
+.icon-size{
+   font-size: 35px;
+}

@@ -1,0 +1,25 @@
+.errorMessage{
+    position: absolute;
+    color: #b22222;
+    font-size: 14px;
+}
+.login-color{
+    color: #30c0f8;
+    text-align: center;
+}
+.icon-size{
+    font-size: 50px;
+    padding-bottom: 13px;
+    color: #30c0f8;
+    text-align: center;
+}
+.btn-color{
+    background-color: #30c0f8;
+    color: white;
+    text-align: center;
+}
+.errorMessage{
+    position: absolute;
+    color: #c90c0c;
+    font-size: 14px;
+}

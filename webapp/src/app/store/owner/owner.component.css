@@ -1,0 +1,13 @@
+.bg-color{
+    background-color: #30c0f8;
+    color: white;
+    border-radius: 5px;
+}
+.text-align{
+    text-align: center;
+}
+.table-responsive{
+    display: inline-table;
+    width: 100%;
+    overflow-x: auto;
+}

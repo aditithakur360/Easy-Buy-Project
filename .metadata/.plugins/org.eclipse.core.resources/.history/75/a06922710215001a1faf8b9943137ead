@@ -1,0 +1,8 @@
+package com.project.ProductService.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository {
+
+}

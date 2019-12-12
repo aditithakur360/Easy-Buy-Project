@@ -1,0 +1,14 @@
+.btn-color{
+    background-color: #30c0f8;
+    color: white;
+}
+.notification-color{
+    color: midnightblue;
+    padding: 20%;
+    background: linear-gradient(to bottom, #9c9c90 30%, #93e1ff 92%);
+}
+.errorMessage{
+    position: absolute;
+    color: #c90c0c;
+    font-size: 14px;
+}

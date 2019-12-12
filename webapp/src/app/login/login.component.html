@@ -1,0 +1,51 @@
+<div class="container container-login">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="cart-empty p-2 border border-danger rounded" *ngIf="loginFlag == true;else">Invalid User ID (or)
+      Incorrect Password
+    </div>
+    <div class="cart-empty p-2 border border-danger rounded" *ngIf="statusFlag == true;else">Account not approved
+    </div>
+    <div class="cart-empty p-2 border border-danger rounded" *ngIf="rejectFlag == true;else">Account Request Rejected
+    </div>
+    <ng-template #else>
+      <div></div>
+    </ng-template>
+    <h2 class=" display-5 font-weight-bolder login-color mt-4"><i
+        class="material-icons align-middle icon-size">account_circle</i>Login</h2>
+    <div class="form-group row font-menu">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-3">
+        <label for="userName">Username/UserId<b class="text-danger">*</b></label>
+        <input type="text" [ngClass]="[
+                  (loginForm.controls.username.dirty || loginForm.controls.username.touched) && loginForm.controls.username.invalid ? 'is-invalid' : '', 
+                  (loginForm.controls.username.valid ||loginForm.controls.username.invalid) ? 'form-control' : '']"
+          id="userName" formControlName="username" placeholder="Enter user id" required>
+        <div class="errorMessage"
+          *ngIf="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+          <div *ngIf="loginForm.controls.username.errors.required">Username is required
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-3">
+        <label for="password">Password<b class="text-danger">*</b></label>
+        <input type="password" [ngClass]="[
+                  (loginForm.controls.password.dirty || loginForm.controls.password.touched) && loginForm.controls.password.invalid ? 'is-invalid' : '', 
+                  (loginForm.controls.password.valid ||loginForm.controls.password.invalid) ? 'form-control' : '']"
+          id="password" formControlName="password" placeholder="Enter Password" required>
+        <div class="errorMessage"
+          *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+          <div *ngIf="loginForm.controls.password.errors.required">Password is required
+          </div>
+        </div>
+      </div>
+      <div class="col-3 col-sm-3 col-md-2 col-lg-2 p-3">
+        <button type="submit" class="bg-color text-white btn highlight-link" [disabled]="!loginForm.valid"
+          name="login">Login</button>
+      </div>
+      <div class="col-9 col-sm-9 col-md-10 col-lg-10 p-3 text-right">
+        <h6 class="text-secondary">New here? <a routerLink="/signup" class="signup-link">Signup</a></h6>
+        <h6 class="text-secondary">New here? <a class="signup-link" [routerLink]="['/forgetCredential', 'id']">Forget UserId</a></h6>
+        <h6 class="text-secondary">New here? <a class="signup-link" [routerLink]="['/forgetCredential', 'password']">Forget Password</a></h6>
+      </div>
+    </div>
+  </form>
+</div>

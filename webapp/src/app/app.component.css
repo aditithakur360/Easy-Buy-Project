@@ -1,0 +1,10 @@
+.flex-wrapper {
+    display: flex;
+    min-height: 92.7vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bg-color{
+    background: linear-gradient(to bottom, #ffffff 0%, #999595 72%);
+    text-align: center;
+}

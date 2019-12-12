@@ -1,0 +1,9 @@
+package com.project.ProductService.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.ProductService.model.Bill;
+
+public interface BillDetailRepository extends JpaRepository<BillDetail, Integer> {
+
+}

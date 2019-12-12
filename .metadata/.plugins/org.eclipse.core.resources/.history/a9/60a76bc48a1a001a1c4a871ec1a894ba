@@ -1,0 +1,68 @@
+package com.project.ProductService.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.ProductService.model.Bill;
+import com.project.ProductService.model.BillDetails;
+import com.project.ProductService.model.Product;
+import com.project.ProductService.model.ProductDetails;
+import com.project.ProductService.model.UserBill;
+import com.project.ProductService.model.Users;
+import com.project.ProductService.repository.BillDetailRepository;
+import com.project.ProductService.repository.BillRepository;
+import com.project.ProductService.repository.ProductRepository;
+import com.project.ProductService.repository.UserRepository;
+
+@Service
+public class BillServiceImpl {
+
+	@Autowired
+	BillRepository billRepository;
+	
+	@Autowired
+	BillDetailRepository billDetailRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Transactional
+	public void userBills(UserBill userBill) {
+		System.out.println(userBill.getUser());
+		Bill bill = new Bill();
+		bill.setPurchaseDate(userBill.getPurchaseDate());
+		bill.setRewardPoints(userBill.getRewardPoints());
+		bill.setTotalAmount(userBill.getTotalAmount());
+
+		Users userDetails = userRepository.findById(userBill.getUser()).get();
+		bill.setUser(userDetails);
+		billRepository.save(bill);
+//	
+		int billId = billRepository.findMaximunBillId();
+//		Bill bill1 = billRepository.findById(billId).get();
+		System.out.println(billId);
+//	
+		List<BillDetails> billDetailsList = new ArrayList<BillDetails>();
+	
+		for(int i=0; i<userBill.getBillDetails().size() ;i++) {	
+				ProductDetails pd = userBill.getBillDetails().get(i);
+				Product product = productRepository.findById(pd.getProductCode()).get();
+//				int rate = product.getRatePerQuantity();
+				int quantity = pd.getQuantity();
+//				total+=(rate * quantity);				
+				billDetailsList.add( new BillDetails(billId, pd.getProductCode(), pd.getQuantity()));
+		}
+		
+//		bill.setBillList(billDetailsList);
+		billRepository.save(bill);
+	}
+	
+}

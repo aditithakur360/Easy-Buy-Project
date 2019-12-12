@@ -1,0 +1,50 @@
+package com.project.ProductService.testing;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.project.ProductService.controller.ProductController;
+import com.project.ProductService.service.ProductServiceImpl;
+
+
+@AutoConfigureMockMvc
+@ContextConfiguration(classes = {ProductController.class, ProductServiceImpl.class})
+@WebMvcTest
+public class ProductControllerMockTest {
+	@Autowired
+	private MockMvc mvc;
+//	@Autowired
+//	PasswordEncoder passwordEncoder;
+//	Users createUser(){
+//		String password = passwordEncoder.encode("pwd");
+//		Users user = new Users(3,"qq","qq",12,"Female",1,"qw",password,"A","A","what is your Nick name","qq","what is your favorite food","qq","what is your pet name","qq",0);
+//	return user;
+//	}
+	
+	@Test
+	public void signupAPI() throws Exception {
+//		LOGGER.info("Start");
+		mvc.perform(MockMvcRequestBuilders.get("/easy-buy/products")
+			      .accept(MediaType.APPLICATION_JSON))
+			      .andExpect(status().isOk());
+//			      .andExpect(MockMvcResultMatchers.jsonPath("$.productCode").exists());
+//		LOGGER.info("End");
+	}
+	
+//	public static String asJsonString(final Object obj) {
+//	    try {
+//	        return new ObjectMapper().writeValueAsString(obj);
+//	    } catch (Exception e) {
+//	        throw new RuntimeException(e);
+//	    }
+//	}
+}

@@ -1,0 +1,66 @@
+version: '3'
+services:
+  easy_buy-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "33062:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./easy-buydb1:/var/lib/mysql
+      - ./dbscripts:/docker-entrypoint-initdb.d
+      
+  eureka-discovery-server:
+    image: eureka-discovery-server-app
+    build: ./eureka-discovery-server/.
+    ports:
+      - 8761:8761
+   
+  authentication-service:
+    image: authentication-service-app
+    build: ./authentication-service/.
+    ports:
+      - 8081:8081
+    depends_on:
+      - easy_buy-mysql
+      - eureka-discovery-server
+    links:
+      - easy_buy-mysql
+      - eureka-discovery-server
+  
+  product-service:
+    image: product-app
+    build: ./product-service/.
+    ports:
+      - 8082:8082
+    depends_on:
+      - easy_buy-mysql
+      - eureka-discovery-server
+    links:
+      - easy_buy-mysql
+      - eureka-discovery-server
+  
+  zuul-service:
+    image: zuul-gateway-app
+    build: ./zuul-gateway/.
+    ports:
+      - 8083:8083
+    depends_on:
+      - easy_buy-mysql
+      - eureka-discovery-server
+      - product-service
+      - authentication-service
+    links:
+      - easy_buy-mysql
+      - eureka-discovery-server
+      - product-service
+      - authentication-service
+  
+  angular-dist:
+    image: angular-dist-app
+    build: ./dist/.
+    ports:
+      - 8085:80
+    links:
+      - zuul-service
+        

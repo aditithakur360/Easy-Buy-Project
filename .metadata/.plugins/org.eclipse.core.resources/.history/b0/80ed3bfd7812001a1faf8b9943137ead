@@ -1,0 +1,5 @@
+package com.project.authenticationservice.service;
+
+public class AppUserDetailsService {
+
+}

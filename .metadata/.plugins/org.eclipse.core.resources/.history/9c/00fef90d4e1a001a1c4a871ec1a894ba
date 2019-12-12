@@ -1,0 +1,38 @@
+package com.project.ProductService.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.ProductService.model.Users;
+import com.project.ProductService.repository.UserRepository;
+
+@Service
+public class UserServiceImpl {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+	@Autowired
+	UserRepository userRepository;
+	
+	@Transactional
+	public List<Users> getAllPendingList(){
+		LOGGER.info("Start");
+		return userRepository.getAllPendingUserList();
+	}
+	
+	@Transactional
+	public void saveStatus(Users user) {
+		LOGGER.info("Start");
+		userRepository.save(user);
+	}
+	
+	@Transactional
+	public void checkUserId(String id) {
+		userRepository.findByUserId(id);
+	}
+}

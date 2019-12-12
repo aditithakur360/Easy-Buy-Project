@@ -1,0 +1,67 @@
+package com.project.authenticationservice.testing;
+
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.project.authenticationservice.exception.UserAlreadyExistsException;
+import com.project.authenticationservice.model.Users;
+import com.project.authenticationservice.repository.UserRepository;
+import com.project.authenticationservice.service.AppUserDetailsService;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.assertEquals;
+
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
+public class UserAuthenticationMockTest {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserAuthenticationMockTest.class);
+	UserRepository repository = Mockito.mock(UserRepository.class);
+	AppUserDetailsService service = new AppUserDetailsService(repository);
+
+	@Test
+	public void mockTestLoadUserByUsername() {
+		LOGGER.info("Start");
+		when(repository.findByUserId("qq")).thenReturn(createUser());
+		UserDetails user = service.loadUserByUsername("qq");
+		String expected = "$2a$10$t9nrg9uTn/Po4jgWxOO34uSUS5fOd0pg8SkL9LupbMRcK/C6o5nEa";
+		assertEquals(expected, user.getPassword());
+		LOGGER.info("End");
+	}
+	private Users createUser() {
+		Users user = new Users(3,"qq","qq",12,"Female",1,"qq","$2a$10$t9nrg9uTn/Po4jgWxOO34uSUS5fOd0pg8SkL9LupbMRcK/C6o5nEa","A","A","what is your Nick name","qq","what is your favorite food","qq","what is your pet name","qq",0);
+		return user;
+	}
+	@Test(expected = UsernameNotFoundException.class)
+	public void testLoadByUserNameNotFoundException() throws UsernameNotFoundException {
+		when(repository.findByUserId("qw")).thenReturn(null);
+		service.loadUserByUsername("qw");
+	}
+	@Test(expected = UserAlreadyExistsException.class)
+	public void testForUserExist() throws UserAlreadyExistsException {
+		LOGGER.info("Start");
+		Users user = new Users(3,"qq","qq",12,"Female",1,"qq","$2a$10$t9nrg9uTn/Po4jgWxOO34uSUS5fOd0pg8SkL9LupbMRcK/C6o5nEa","A","A","what is your Nick name","qq","what is your favorite food","qq","what is your pet name","qq",0);
+		when(repository.findByUserId("qq")).thenReturn(user);
+		service.signup(user);
+		LOGGER.info("End");
+	}
+	@Test
+	public void newSignUp() throws UserAlreadyExistsException {
+		LOGGER.info("Start");
+		when(repository.findByUserId("qw")).thenReturn(null);
+		Users user = new Users(3,"qq","qq",12,"Female",1,"qw","$2a$10$t9nrg9uTn/Po4jgWxOO34uSUS5fOd0pg8SkL9LupbMRcK/C6o5nEa","A","A","what is your Nick name","qq","what is your favorite food","qq","what is your pet name","qq",0);
+		service.signup(user);
+		LOGGER.info("End");
+
+	}
+}

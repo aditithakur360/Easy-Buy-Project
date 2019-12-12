@@ -1,0 +1,5 @@
+package com.project.authenticationservice.repository;
+
+public interface RoleRepository {
+
+}

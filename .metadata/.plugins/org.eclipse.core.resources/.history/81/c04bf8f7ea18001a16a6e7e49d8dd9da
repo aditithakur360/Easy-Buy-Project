@@ -1,0 +1,19 @@
+package com.project.ProductService.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Repository;
+
+import com.project.ProductService.model.Users;
+
+@Repository
+public interface UserRepository extends JpaRepository<Users, Integer>{
+
+	Users findByUserId(String name) throws UsernameNotFoundException;
+	
+	@Query(value="select * from user where us_status='P';", nativeQuery=true)
+	List<Users> getAllPendingUserList();
+}

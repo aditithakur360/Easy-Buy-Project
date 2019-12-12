@@ -1,0 +1,59 @@
+ .form-color{
+   margin: 2% 20% 2% 20%;
+   padding: 0% 2% 2% 2%;
+   box-shadow: 0px 0px 10px 0px #000000;
+}
+.icon-size{
+    font-size: 35px;
+    color: #539bb3;
+}
+.text-color{
+    color: #539bb3;
+    text-align: center;
+}
+.bg-color{
+    background-color: #3f3d3d;
+}
+.errorMessage{
+    position: absolute;
+    color: #c90c0c;
+    font-size: 14px;
+}
+.signup-form{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+.notification-color{
+    color: midnightblue;
+    padding: 20%;
+    background: linear-gradient(to bottom, #9c9c90 30%, #93e1ff 92%);
+}
+.login-link:hover{
+    color: rgb(248, 70, 6);
+    text-decoration: none;
+}
+.login-link:link, .login-link:active{
+    color: midnightblue;
+    text-decoration: none;
+}
+.exist-user{
+    color: #3f3d3d;
+}
+.highlight-link{
+    transition: transform 0.1s;
+}
+.highlight-link:hover{
+   transform: scale(1.05);
+}
+.cart-empty{
+    background-color: #e9baba;
+    color: #8b0000;
+    font-size: 18px;
+}

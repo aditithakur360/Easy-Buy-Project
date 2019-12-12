@@ -1,0 +1,21 @@
+package com.project.ProductService.service;
+
+import com.project.ProductService.repository.ProductRepository;
+
+public class ProductServiceImpl {
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	public List<Product> sortListByName(){
+		return productRepository.getSortByName();
+	}
+	
+	public List<Product> sortListByPrice(){
+		return productRepository.getSortByPrice();
+	}
+	
+	public List<Product> sortListByAvailability(){
+		return productRepository.getSortByAvailability();
+	}
+}

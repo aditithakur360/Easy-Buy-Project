@@ -1,0 +1,16 @@
+.icon-delete:hover{
+    cursor: pointer;
+    color: red;
+  }
+  
+  .icon-edit:hover{
+    cursor: pointer;
+    color:darkseagreen;
+  }
+  .btn-color{
+    background-color: #30c0f8;
+    color: white;
+}
+.text-color{
+    color: #30c0f8;
+}

@@ -1,0 +1,54 @@
+package com.project.ProductService.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
+
+
+@Entity
+@Table(name = "bill")
+public class Bill {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "bi_id")
+	@NotNull
+	private int id;
+	
+	@Column(name = "bi_purchase_date")
+	@NotNull
+	private Date purchaseDate;
+	
+	@Column(name = "bi_total_amount")
+	@NotNull
+	private double totalAmount;
+	
+	@Column(name = "bi_rewards_points")
+	@NotNull
+	private int rewardPoints;
+	
+	@Column(name = "user_us_id")
+	@NotNull
+	private Users userId;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "bill_details", joinColumns = @JoinColumn(name = "bd_pt_code"), inverseJoinColumns = @JoinColumn(name = "bd_bi_id"))
+	List<Product> productList;
+	
+	@ManyToOne()
+	@JoinColumn(name = "user_us_id")
+	private Users user;
+	
+}

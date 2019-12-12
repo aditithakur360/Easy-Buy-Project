@@ -1,0 +1,21 @@
+package com.project.ProductService.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.project.ProductService.model.Users;
+import com.project.ProductService.repository.UserRepository;
+
+public class UserServiceImpl {
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Transactional
+	public List<Users> getAllPendingList(){
+		return userRepository.getAllPendingUserList();
+	}
+}

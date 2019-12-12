@@ -1,0 +1,64 @@
+<div *ngIf="role=='O'">
+  <app-owner></app-owner>
+</div>
+<div *ngIf="role=='U' || role=='A'">
+
+  <div class="row mr-0 bg-custom">
+    <div class="col-12 col-sm-12 col-md-8 col-md-xl-8 col-lg-8 pt-2">
+      <app-search (filterFood)="displaySearchFood($event)"></app-search>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 col-md-xl-4 col-lg-3 pt-2">
+      <div class="form-inline">
+        
+        <div class="input-group">
+            <label for="sort" class="text-white mr-2"><h5>Sort </h5></label>
+            <select id="sort"
+                    name="sort"
+                    class="form-control"
+                    [(ngModel)]="sortType" placeholder="Sort By">
+                    <option value="sort" [selected] hidden>sort by</option>
+                <option value="name">Name</option>
+                <option value="availability">Availability</option>
+                <option value="price">Price</option>
+                <option value="popularity">Popularity</option>
+              </select>
+              <button type="submit" (click)="sort()" class="input-group-text material-icons align-middle color-dark btn-white">sort</button>
+            </div> 
+      </div>
+    </div>
+
+
+  </div>
+
+
+  
+
+    <br>
+
+  
+        <div class="container mt-4">
+            <div class="d-flex justify-content-between">
+              <h3>Latest Trends...</h3>
+              <div *ngIf="role=='A'">
+                <button type="button" class="btn btn-dark text-white mb-2" (click)="addNewProduct()">Add Product</button>
+              </div>
+              <div *ngIf="role=='A'">
+                  <button type="button" class="btn btn-dark text-white mb-2" (click)="addOffers()">Add Offers</button>
+                </div>
+                <div *ngIf="role=='A'">
+                    <button type="button" class="btn btn-dark text-white mb-2" (click)="updateOffers()">Update Offers</button>
+                  </div>
+            </div>
+            <br>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3" *ngFor="let products of productsList">
+              <app-product-list [list] = products
+              (deleteEmitter) = "deleteProduct($event)"></app-product-list>
+            </div>
+          </div>
+    </div>
+    
+
+ 
+
+</div>
